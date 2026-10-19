@@ -1,46 +1,36 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-
 import { ActivityLogCard } from '@/components/sections/ActivityLogCard';
 import { InsightCard } from '@/components/sections/InsightCard';
 import { RepositoryCard } from '@/components/sections/RepositoryCard';
 import { fetchActivityLogs } from '@/lib/adapters/notion';
 import { fetchProfessionalInsights } from '@/lib/adapters/notion';
-import { fetchRepositories } from '@/lib/adapters/notion';
-import { enrichRepository } from '@/lib/adapters/github';
+import { fetchUserRepositories } from '@/lib/adapters/github';
 
 export async function getStaticProps() {
   try {
     const [logs, insights, repos] = await Promise.all([
       fetchActivityLogs(),
       fetchProfessionalInsights(),
-      fetchRepositories(),
+      fetchUserRepositories(),
     ]);
 
-    const enrichedRepos = await Promise.all(
-      repos.map(async (repo) => {
-        const gh = await enrichRepository({
-          repoName: repo.repoName,
-          url: repo.url,
-        });
-        return {
-          title: repo.title,
-          repoName: repo.repoName,
-          description: repo.description || gh.description || '',
-          url: repo.url || gh.htmlUrl || '',
-          stargazers: gh.stargazersCount ?? repo.stargazers,
-          commitCount: gh.commitCount ?? repo.commitCount,
-          lastCommitAt: gh.lastCommitAt ?? repo.lastCommitAt,
-          language: gh.language ?? repo.language,
-        };
-      })
-    );
+    const repositories = repos.slice(0, 3).map((repo) => ({
+      title: repo.name,
+      repoName: repo.name,
+      description: repo.description || 'No description provided.',
+      url: repo.htmlUrl,
+      stargazers: repo.stargazersCount,
+      commitCount: repo.commitCount,
+      lastCommitAt: repo.lastCommitAt,
+      language: repo.language,
+    }));
 
     return {
       props: {
         logs: logs.slice(0, 4),
         insights: insights.slice(0, 2),
-        repositories: enrichedRepos.slice(0, 3),
+        repositories,
       },
       revalidate: 3600,
     };

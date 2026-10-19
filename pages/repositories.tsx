@@ -1,34 +1,15 @@
 import { RepositoryCard } from '@/components/sections/RepositoryCard';
-import { fetchRepositories } from '@/lib/adapters/notion';
-import { enrichRepository } from '@/lib/adapters/github';
-
+import { fetchUserRepositories } from '@/lib/adapters/github';
 
 export async function getStaticProps() {
   try {
-    const notionRepos = await fetchRepositories();
-    const enriched = await Promise.all(
-      notionRepos.map(async (repo) => {
-        const gh = await enrichRepository({
-          repoName: repo.repoName,
-          url: repo.url,
-        });
-        return {
-          title: repo.title,
-          repoName: repo.repoName,
-          description: repo.description || gh.description || '',
-          url: repo.url || gh.htmlUrl || '',
-          stargazers: gh.stargazersCount ?? repo.stargazers,
-          commitCount: gh.commitCount ?? repo.commitCount,
-          lastCommitAt: gh.lastCommitAt ?? repo.lastCommitAt,
-          language: gh.language ?? repo.language,
-        };
-      })
-    );
+    const repos = await fetchUserRepositories();
     return {
-      props: { repositories: enriched },
+      props: { repositories: repos },
       revalidate: 3600,
     };
-  } catch {
+  } catch (error) {
+    console.warn('GitHub repositories fetch failed:', error);
     return {
       props: { repositories: [] },
       revalidate: 60,
@@ -38,14 +19,15 @@ export async function getStaticProps() {
 
 interface RepositoriesPageProps {
   repositories: {
-    title: string;
-    repoName: string;
-    description: string;
-    url: string;
-    stargazers: number;
+    name: string;
+    fullName: string;
+    description: string | null;
+    htmlUrl: string;
+    stargazersCount: number;
+    language: string | null;
+    updatedAt: string;
     commitCount: number;
     lastCommitAt: string | null;
-    language: string | null;
   }[];
 }
 
@@ -57,20 +39,30 @@ export default function RepositoriesPage({ repositories }: RepositoriesPageProps
           GitHub Repositories
         </h1>
         <p className="text-lg text-[#8b949e] max-w-2xl">
-          Open-source projects and contributions — synced from Notion and GitHub.
+          Public repositories from GitHub — synced in real time.
         </p>
       </div>
 
       {repositories.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-[#8b949e] text-lg">
-            No repositories found. Check your Notion and GitHub connections.
+            No repositories found. Check your GitHub username configuration.
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {repositories.map((repo) => (
-            <RepositoryCard key={repo.repoName} {...repo} />
+            <RepositoryCard
+              key={repo.name}
+              title={repo.name}
+              repoName={repo.name}
+              description={repo.description || 'No description provided.'}
+              url={repo.htmlUrl}
+              stargazers={repo.stargazersCount}
+              commitCount={repo.commitCount}
+              lastCommitAt={repo.lastCommitAt}
+              language={repo.language}
+            />
           ))}
         </div>
       )}
