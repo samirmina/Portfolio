@@ -5,7 +5,9 @@ import '../src/app/globals.css';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <div className="pt-20">{/* Offset for fixed navbar */}
+        <Component {...pageProps} />
+      </div>
     </Layout>
   );
 }

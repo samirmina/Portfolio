@@ -5,56 +5,96 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { FeedbackDrawer } from '@/components/feedback/FeedbackDrawer';
 
-export default function Contact() {
+export async function getStaticProps() {
+  try {
+    const { fetchDirectLineNotes } = await import('@/lib/adapters/notion');
+    const notes = await fetchDirectLineNotes();
+    return {
+      props: { notes },
+      revalidate: 3600,
+    };
+  } catch {
+    return {
+      props: { notes: [] },
+      revalidate: 60,
+    };
+  }
+}
+
+interface ContactPageProps {
+  notes: {
+    id: string;
+    messageTitle: string;
+    messageBody: string;
+    authorName: string;
+    authorContact: string;
+    type: 'DIRECT_LINE' | 'OPINION';
+    targetId: string | null;
+  }[];
+}
+
+export default function Contact({ notes }: ContactPageProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <>
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mb-12">
+        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
           Contact
         </h1>
-        <p className="text-lg text-slate-300 leading-relaxed mb-12">
-          Have a project in mind, want to discuss architecture, or just want to
-          say hello? Use the Direct Line below to send a message.
+        <p className="text-lg text-slate-400 max-w-2xl">
+          Reach out through the Direct Line or explore the messages below.
         </p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <Card>
-            <h3 className="text-lg font-semibold text-white mb-2">Direct Line</h3>
-            <p className="text-sm text-slate-400 mb-4">
-              Send a message directly through the secure feedback channel.
-            </p>
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => setIsDrawerOpen(true)}
-            >
-              Open Direct Line
-            </Button>
-          </Card>
-          <Card>
-            <h3 className="text-lg font-semibold text-white mb-2">GitHub</h3>
-            <p className="text-sm text-slate-400 mb-4">
-              Check out my open-source projects and contributions.
-            </p>
-            <Button variant="outline" size="lg" asChild>
-              <a
-                href="https://github.com/samirmina"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View GitHub
-              </a>
-            </Button>
-          </Card>
+      <div className="mb-8">
+        <Button variant="primary" size="lg" onClick={() => setIsDrawerOpen(true)}>
+          Send a Message
+        </Button>
+      </div>
+
+      {notes.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="text-slate-500 text-lg">
+            No messages yet. Be the first to reach out!
+          </p>
         </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {notes.map((note) => (
+            <Card key={note.id} className="flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-white">
+                  {note.messageTitle}
+                </h3>
+                <span
+                  className={`text-xs px-2 py-1 rounded border ${
+                    note.type === 'DIRECT_LINE'
+                      ? 'bg-teal-500/10 text-teal-400 border-teal-500/20'
+                      : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                  }`}
+                >
+                  {note.type === 'DIRECT_LINE' ? 'Direct Line' : 'Opinion'}
+                </span>
+              </div>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                {note.messageBody}
+              </p>
+              <div className="text-xs text-slate-500 mt-auto">
+                — {note.authorName}
+                {note.authorContact && (
+                  <span className="text-slate-600"> ({note.authorContact})</span>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
 
-        <FeedbackDrawer
-          isOpen={isDrawerOpen}
-          onClose={() => setIsDrawerOpen(false)}
-        />
-      </section>
-    </>
+      <FeedbackDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      />
+    </div>
   );
 }
