@@ -1,0 +1,63 @@
+{
+  "activityLogs": [
+    {
+      "id": "seed-activity-001",
+      "title": "Exploring Next.js 14 Server Actions",
+      "summary": "Investigating Server Actions and mutations in the App Router.",
+      "tags": ["nextjs", "server-actions"],
+      "videoUrl": null,
+      "approvals": 0,
+      "date": "2026-09-15",
+      "published": true
+    },
+    {
+      "id": "seed-activity-002",
+      "title": "Tailwind CSS Typography Plugin",
+      "summary": "Configuring @tailwindcss/typography for long-form content.",
+      "tags": ["css", "tailwind"],
+      "videoUrl": null,
+      "approvals": 0,
+      "date": "2026-09-10",
+      "published": true
+    }
+  ],
+  "professionalInsights": [
+    {
+      "id": "seed-insight-001",
+      "title": "SSG vs ISR vs SSR Trade-offs",
+      "context": "Comparing rendering strategies for a portfolio site.",
+      "challenges": ["Build time vs freshness", "Cache invalidation complexity"],
+      "tradeOffs": ["SSG offers fastest delivery; ISR adds freshness at build complexity."],
+      "tags": ["architecture", "rendering"],
+      "videoUrl": null,
+      "approvals": 0,
+      "date": "2026-08-20",
+      "published": true
+    }
+  ],
+  "repositories": [
+    {
+      "id": "seed-repo-001",
+      "title": "Portfolio Website",
+      "repoName": "portfolio",
+      "description": "Professional ecosystem portfolio built on Next.js 14.",
+      "url": "https://github.com/example/portfolio",
+      "stargazers": 0,
+      "commitCount": 0,
+      "lastCommitAt": null,
+      "language": "TypeScript",
+      "published": true
+    }
+  ],
+  "directLine": [
+    {
+      "id": "seed-note-001",
+      "messageTitle": "Hello",
+      "messageBody": "Seed fallback note.",
+      "authorName": "Seed",
+      "authorContact": "seed@example.com",
+      "type": "OPINION",
+      "targetId": null
+    }
+  ]
+}
