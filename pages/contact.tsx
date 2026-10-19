@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Layout } from '@/components/layout/Layout';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { FeedbackDrawer } from '@/components/feedback/FeedbackDrawer';
@@ -10,7 +9,7 @@ export default function Contact() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <Layout>
+    <>
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-8">
           Contact
@@ -56,6 +55,6 @@ export default function Contact() {
           onClose={() => setIsDrawerOpen(false)}
         />
       </section>
-    </Layout>
+    </>
   );
 }

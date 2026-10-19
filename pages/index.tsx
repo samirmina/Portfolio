@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { Layout } from '@/components/layout/Layout';
 import { ActivityLogCard } from '@/components/sections/ActivityLogCard';
 import { InsightCard } from '@/components/sections/InsightCard';
 import { RepositoryCard } from '@/components/sections/RepositoryCard';
@@ -69,7 +68,7 @@ const repositories = [
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-slate-950 to-slate-950" />
@@ -161,6 +160,6 @@ export default function Home() {
           </Button>
         </Card>
       </section>
-    </Layout>
+    </>
   );
 }

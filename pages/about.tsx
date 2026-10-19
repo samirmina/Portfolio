@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { Layout } from '@/components/layout/Layout';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
 export default function About() {
   return (
-    <Layout>
+    <>
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-8">
           About
@@ -72,6 +71,6 @@ export default function About() {
           </Button>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
