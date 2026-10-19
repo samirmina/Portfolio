@@ -6,6 +6,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  asChild?: boolean;
 }
 
 export function Button({
@@ -13,6 +14,8 @@ export function Button({
   size = 'md',
   className,
   disabled,
+  asChild = false,
+  children,
   ...props
 }: ButtonProps) {
   const base =
@@ -33,11 +36,24 @@ export function Button({
     lg: 'h-12 px-6 text-base',
   };
 
+  const classes = cn(base, variants[variant], sizes[size], className);
+
+  if (asChild) {
+    const child = children as React.ReactElement;
+    if (child && typeof child === 'object' && 'props' in child) {
+      return (
+        <child.type
+          {...props}
+          {...child.props}
+          className={cn(classes, child.props.className)}
+        />
+      );
+    }
+  }
+
   return (
-    <button
-      className={cn(base, variants[variant], sizes[size], className)}
-      disabled={disabled}
-      {...props}
-    />
+    <button className={classes} disabled={disabled} {...props}>
+      {children}
+    </button>
   );
 }
