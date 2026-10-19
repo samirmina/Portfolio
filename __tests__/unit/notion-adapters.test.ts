@@ -48,10 +48,10 @@ describe('fetchActivityLogs', () => {
     expect(logs).toHaveLength(1);
   });
 
-  it('falls back to seed data on error', async () => {
+  it('falls back to empty array on error', async () => {
     mockPaginate.mockRejectedValue(new Error('Notion down'));
     const logs = await fetchActivityLogs();
-    expect(logs.length).toBeGreaterThan(0);
+    expect(logs).toEqual([]);
   });
 });
 

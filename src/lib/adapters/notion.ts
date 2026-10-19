@@ -13,9 +13,7 @@ import {
   extractDate,
   extractCheckbox,
   extractSelect,
-  filterPublished,
 } from '../normalizers';
-import seedFallback from '../../data/seed-fallback.json';
 import { env } from '../../../lib/env';
 
 type NotionPage = Record<string, unknown>;
@@ -74,7 +72,7 @@ async function queryDatabaseExhaustive<T extends { id: string }>(
     }
   }
 
-  return records.length > 0 ? records : fallback;
+  return records;
 }
 
 /** Map a raw Notion page to an ActivityLog. */
@@ -232,13 +230,8 @@ export async function fetchActivityLogs(): Promise<ActivityLog[]> {
       []
     );
   } catch (error) {
-    console.warn(
-      'Notion Activity Logs fetch failed, using seed fallback:',
-      error
-    );
-    const seed = seedFallback
-      .activityLogs as ActivityLog[];
-    return filterPublished(seed);
+    console.warn('Notion Activity Logs fetch failed:', error);
+    return [];
   }
 }
 
@@ -250,13 +243,8 @@ export async function fetchProfessionalInsights(): Promise<ProfessionalInsight[]
       []
     );
   } catch (error) {
-    console.warn(
-      'Notion Professional Insights fetch failed, using seed fallback:',
-      error
-    );
-    const seed = seedFallback
-      .professionalInsights as ProfessionalInsight[];
-    return filterPublished(seed);
+    console.warn('Notion Professional Insights fetch failed:', error);
+    return [];
   }
 }
 
@@ -268,13 +256,8 @@ export async function fetchRepositories(): Promise<Repository[]> {
       []
     );
   } catch (error) {
-    console.warn(
-      'Notion Repositories fetch failed, using seed fallback:',
-      error
-    );
-    const seed = seedFallback
-      .repositories as Repository[];
-    return filterPublished(seed);
+    console.warn('Notion Repositories fetch failed:', error);
+    return [];
   }
 }
 
@@ -287,13 +270,8 @@ export async function fetchDirectLineNotes(): Promise<DirectLineNote[]> {
       { filterPublished: false }
     );
   } catch (error) {
-    console.warn(
-      'Notion Direct Line fetch failed, using seed fallback:',
-      error
-    );
-    const seed = seedFallback
-      .directLine as DirectLineNote[];
-    return seed;
+    console.warn('Notion Direct Line fetch failed:', error);
+    return [];
   }
 }
 

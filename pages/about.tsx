@@ -5,11 +5,11 @@ import { Button } from '@/components/ui/Button';
 export default function About() {
   return (
     <>
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-[#c9d1d9] mb-8">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-8">
           About
         </h1>
-        <div className="space-y-6 text-lg text-[#c9d1d9] leading-relaxed">
+        <div className="space-y-6 text-lg text-[#8b949e] leading-relaxed">
           <p>
             I&apos;m Samir Mena, a software engineer focused on building
             professional ecosystems that bridge the gap between content and code.
@@ -32,7 +32,7 @@ export default function About() {
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
           <Card>
-            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-2">Tech Stack</h3>
+            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-4">Tech Stack</h3>
             <ul className="text-sm text-[#8b949e] space-y-2">
               <li>• Next.js 14 (App Router)</li>
               <li>• TypeScript (strict mode)</li>
@@ -44,7 +44,7 @@ export default function About() {
             </ul>
           </Card>
           <Card>
-            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-2">Principles</h3>
+            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-4">Principles</h3>
             <ul className="text-sm text-[#8b949e] space-y-2">
               <li>• Accessibility first (WCAG 2.1 AA)</li>
               <li>• Security by default (CSP, rate limiting)</li>
@@ -58,7 +58,7 @@ export default function About() {
 
         <div className="mt-12 flex gap-4">
           <Button variant="primary" size="lg" asChild>
-            <Link href="/contact">Get in Touch</Link>
+            <Link href="/contact">Contact Me</Link>
           </Button>
           <Button variant="outline" size="lg" asChild>
             <a
