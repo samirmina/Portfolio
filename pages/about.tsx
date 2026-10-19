@@ -6,10 +6,10 @@ export default function About() {
   return (
     <>
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-8">
+        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-[#c9d1d9] mb-8">
           About
         </h1>
-        <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+        <div className="space-y-6 text-lg text-[#c9d1d9] leading-relaxed">
           <p>
             I&apos;m Samir Mena, a software engineer focused on building
             professional ecosystems that bridge the gap between content and code.
@@ -32,8 +32,8 @@ export default function About() {
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
           <Card>
-            <h3 className="text-lg font-semibold text-white mb-2">Tech Stack</h3>
-            <ul className="text-sm text-slate-400 space-y-2">
+            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-2">Tech Stack</h3>
+            <ul className="text-sm text-[#8b949e] space-y-2">
               <li>• Next.js 14 (App Router)</li>
               <li>• TypeScript (strict mode)</li>
               <li>• Tailwind CSS + Typography</li>
@@ -44,8 +44,8 @@ export default function About() {
             </ul>
           </Card>
           <Card>
-            <h3 className="text-lg font-semibold text-white mb-2">Principles</h3>
-            <ul className="text-sm text-slate-400 space-y-2">
+            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-2">Principles</h3>
+            <ul className="text-sm text-[#8b949e] space-y-2">
               <li>• Accessibility first (WCAG 2.1 AA)</li>
               <li>• Security by default (CSP, rate limiting)</li>
               <li>• Test-driven development (80%+ coverage)</li>

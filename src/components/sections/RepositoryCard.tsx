@@ -26,15 +26,15 @@ export function RepositoryCard({
     <Card className="flex flex-col gap-4">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">{title}</h3>
-          <p className="text-xs text-slate-500 mt-1">{repoName}</p>
+          <h3 className="text-lg font-semibold text-[#c9d1d9]">{title}</h3>
+          <p className="text-xs text-[#8b949e] mt-1">{repoName}</p>
         </div>
-        <span className="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
+        <span className="text-xs px-2 py-1 rounded bg-[#21262d] text-[#c9d1d9] border border-[#30363d]">
           {language ?? 'N/A'}
         </span>
       </div>
-      <p className="text-sm text-slate-400 leading-relaxed">{description}</p>
-      <div className="flex flex-wrap gap-4 text-xs text-slate-500">
+      <p className="text-sm text-[#8b949e] leading-relaxed">{description}</p>
+      <div className="flex flex-wrap gap-4 text-xs text-[#8b949e]">
         <span>⭐ {stargazers} stars</span>
         <span>📝 {commitCount} commits</span>
         {lastCommitAt && (

@@ -39,10 +39,10 @@ export default function Contact({ notes }: ContactPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-4">
           Contact
         </h1>
-        <p className="text-lg text-slate-400 max-w-2xl">
+        <p className="text-lg text-[#8b949e] max-w-2xl">
           Reach out through the Direct Line or explore the messages below.
         </p>
       </div>
@@ -55,7 +55,7 @@ export default function Contact({ notes }: ContactPageProps) {
 
       {notes.length === 0 ? (
         <div className="text-center py-20">
-          <p className="text-slate-500 text-lg">
+          <p className="text-[#8b949e] text-lg">
             No messages yet. Be the first to reach out!
           </p>
         </div>
@@ -64,23 +64,23 @@ export default function Contact({ notes }: ContactPageProps) {
           {notes.map((note) => (
             <Card key={note.id} className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-[#c9d1d9]">
                   {note.messageTitle}
                 </h3>
                 <span
                   className={`text-xs px-2 py-1 rounded border ${
                     note.type === 'DIRECT_LINE'
-                      ? 'bg-teal-500/10 text-teal-400 border-teal-500/20'
+                      ? 'bg-[#238636]/10 text-[#238636] border-teal-500/20'
                       : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
                   }`}
                 >
                   {note.type === 'DIRECT_LINE' ? 'Direct Line' : 'Opinion'}
                 </span>
               </div>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-[#8b949e] leading-relaxed">
                 {note.messageBody}
               </p>
-              <div className="text-xs text-slate-500 mt-auto">
+              <div className="text-xs text-[#8b949e] mt-auto">
                 — {note.authorName}
                 {note.authorContact && (
                   <span className="text-slate-600"> ({note.authorContact})</span>

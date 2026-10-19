@@ -25,22 +25,22 @@ export function ActivityLogCard({
     <Card className="flex flex-col gap-4">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">{title}</h3>
+          <h3 className="text-lg font-semibold text-[#c9d1d9]">{title}</h3>
           {date && (
-            <time className="text-xs text-slate-500 mt-1 block">{date}</time>
+            <time className="text-xs text-[#8b949e] mt-1 block">{date}</time>
           )}
         </div>
-        <span className="text-xs px-2 py-1 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">
+        <span className="text-xs px-2 py-1 rounded bg-[#238636]/10 text-[#238636] border border-[#238636]/20">
           {approvals} endorsements
         </span>
       </div>
-      <p className="text-sm text-slate-400 leading-relaxed">{summary}</p>
+      <p className="text-sm text-[#8b949e] leading-relaxed">{summary}</p>
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700"
+              className="text-xs px-2 py-1 rounded bg-[#21262d] text-[#c9d1d9] border border-[#30363d]"
             >
               {tag}
             </span>

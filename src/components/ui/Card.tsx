@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from '@/lib/utils';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -17,8 +15,8 @@ export function Card({
   return (
     <div
       className={cn(
-        'rounded-xl border border-slate-700 bg-slate-900/50 backdrop-blur-sm',
-        padded && 'p-6',
+        'rounded-md border border-[#30363d] bg-[#161b22]',
+        padded && 'p-4',
         className
       )}
       {...props}

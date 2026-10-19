@@ -89,22 +89,21 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-slate-950 to-slate-950" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+      <section className="border-b border-[#30363d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="max-w-3xl">
-            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Samir Mena
             </h1>
-            <p className="text-xl sm:text-2xl text-slate-400 mb-8 leading-relaxed">
+            <p className="text-lg text-[#8b949e] mb-6 leading-relaxed">
               Software Engineer building professional ecosystems with Next.js,
               Notion, and modern web technologies.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="primary" size="lg" asChild>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="primary" size="md" asChild>
                 <Link href="/contact">Contact Me</Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="md" asChild>
                 <Link href="/activity">View Activity</Link>
               </Button>
             </div>
@@ -113,84 +112,79 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       </section>
 
       {/* Activity Logs Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-3xl font-bold text-white">Activity Logs</h2>
-            <p className="text-slate-400 mt-2">
-              Recent work, explorations, and technical deep-dives.
-            </p>
+      <section className="border-b border-[#30363d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-semibold text-white">Activity Logs</h2>
+            <Link
+              href="/activity"
+              className="text-[#58a6ff] hover:text-[#79c0ff] text-sm font-medium"
+            >
+              View all →
+            </Link>
           </div>
-          <Link
-            href="/activity"
-            className="text-teal-400 hover:text-teal-300 text-sm font-medium"
-          >
-            View all →
-          </Link>
+          {logs.length === 0 ? (
+            <p className="text-[#8b949e]">No activity logs found.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {logs.map((log) => (
+                <ActivityLogCard key={log.id} {...log} />
+              ))}
+            </div>
+          )}
         </div>
-        {logs.length === 0 ? (
-          <p className="text-slate-500">No activity logs found.</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {logs.map((log) => (
-              <ActivityLogCard key={log.id} {...log} />
-            ))}
-          </div>
-        )}
       </section>
 
       {/* Professional Insights Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-3xl font-bold text-white">Professional Insights</h2>
-            <p className="text-slate-400 mt-2">
-              Trade-offs, challenges, and architectural decisions.
-            </p>
+      <section className="border-b border-[#30363d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-semibold text-white">
+              Professional Insights
+            </h2>
+            <Link
+              href="/insights"
+              className="text-[#58a6ff] hover:text-[#79c0ff] text-sm font-medium"
+            >
+              View all →
+            </Link>
           </div>
-          <Link
-            href="/insights"
-            className="text-teal-400 hover:text-teal-300 text-sm font-medium"
-          >
-            View all →
-          </Link>
+          {insights.length === 0 ? (
+            <p className="text-[#8b949e]">No insights found.</p>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              {insights.map((insight) => (
+                <InsightCard key={insight.id} {...insight} />
+              ))}
+            </div>
+          )}
         </div>
-        {insights.length === 0 ? (
-          <p className="text-slate-500">No insights found.</p>
-        ) : (
-          <div className="grid grid-cols-1 gap-6">
-            {insights.map((insight) => (
-              <InsightCard key={insight.id} {...insight} />
-            ))}
-          </div>
-        )}
       </section>
 
       {/* GitHub Repositories Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-3xl font-bold text-white">GitHub Repositories</h2>
-            <p className="text-slate-400 mt-2">
-              Open-source projects and contributions.
-            </p>
+      <section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-semibold text-white">
+              GitHub Repositories
+            </h2>
+            <Link
+              href="/repositories"
+              className="text-[#58a6ff] hover:text-[#79c0ff] text-sm font-medium"
+            >
+              View all →
+            </Link>
           </div>
-          <Link
-            href="/repositories"
-            className="text-teal-400 hover:text-teal-300 text-sm font-medium"
-          >
-            View all →
-          </Link>
+          {repositories.length === 0 ? (
+            <p className="text-[#8b949e]">No repositories found.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {repositories.map((repo) => (
+                <RepositoryCard key={repo.repoName} {...repo} />
+              ))}
+            </div>
+          )}
         </div>
-        {repositories.length === 0 ? (
-          <p className="text-slate-500">No repositories found.</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {repositories.map((repo) => (
-              <RepositoryCard key={repo.repoName} {...repo} />
-            ))}
-          </div>
-        )}
       </section>
     </>
   );
