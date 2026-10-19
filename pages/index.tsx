@@ -9,7 +9,7 @@ export default function Home() {
       </p>
       <div className="flex gap-4 sm:gap-6">
         <a
-          href="/api/feedback"
+          href="/feedback"
           className="px-6 py-3 rounded-md bg-teal-600 text-white font-medium hover:bg-teal-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2"
         >
           Get in Touch
