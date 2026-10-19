@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'avatars.githubusercontent.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'nextjs.org',
+        pathname: '/**',
+      },
     ],
   },
   async headers() {
@@ -22,7 +27,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.notion.com https://api.github.com https://*.upstash.redis; frame-src 'self' https://www.youtube.com https://www.loom.com; base-uri 'self'; form-action 'self';",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.notion.com https://api.github.com https://*.upstash.redis https://nextjs.org; frame-src 'self' https://www.youtube.com https://www.loom.com; base-uri 'self'; form-action 'self';",
           },
         ],
       },
