@@ -47,7 +47,7 @@ export function InsightCard({
           <ul className="text-sm text-[#8b949e] space-y-1">
             {challenges.map((c, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="text-teal-500 mt-1">•</span>
+                <span className="text-[#58a6ff] mt-1">•</span>
                 {c}
               </li>
             ))}
