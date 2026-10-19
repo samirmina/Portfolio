@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 export default function About() {
   return (
     <>
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
         <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-8">
           About
         </h1>
