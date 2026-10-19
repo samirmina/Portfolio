@@ -15,8 +15,8 @@ export function Card({
   return (
     <div
       className={cn(
-        'rounded-md border border-[#30363d] bg-[#161b22]',
-        padded && 'p-4',
+        'rounded-lg border border-[#30363d] bg-[#161b22] shadow-sm',
+        padded && 'p-6',
         className
       )}
       {...props}
