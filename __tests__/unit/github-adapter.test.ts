@@ -1,4 +1,5 @@
 import { enrichRepository, fetchUserRepositories } from '@/lib/adapters/github';
+import { describeRepo } from '@/data/repo-descriptions';
 
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
@@ -14,6 +15,21 @@ jest.mock('@/lib/notion', () => ({
 jest.mock('@/lib/backoff', () => ({
   withBackoff: jest.fn(async (fn: () => Promise<unknown>) => fn()),
 }));
+
+describe('describeRepo', () => {
+  it('returns the curated description for known repos', () => {
+    expect(describeRepo('Linkdroid', null)).toContain('scrcpy');
+    expect(describeRepo('CodeSpace', null)).toContain('Chronos');
+  });
+
+  it('prefers the GitHub description when present', () => {
+    expect(describeRepo('Portfolio', 'Custom override')).toBe('Custom override');
+  });
+
+  it('returns empty string for unknown repos with no GitHub description', () => {
+    expect(describeRepo('totally-unknown', null)).toBe('');
+  });
+});
 
 describe('enrichRepository', () => {
   beforeEach(() => {
@@ -55,7 +71,6 @@ describe('enrichRepository', () => {
       url: 'https://github.com/user/nonexistent',
     });
 
-    expect(result.description).toBeNull();
     expect(result.stargazersCount).toBe(0);
   });
 });

@@ -1,6 +1,7 @@
 import { withBackoff } from '../backoff';
 import { env } from '../../../lib/env';
 import { GitHubRepository } from '../normalizers';
+import { describeRepo } from '../../data/repo-descriptions';
 
 const GITHUB_API = 'https://api.github.com';
 
@@ -103,7 +104,7 @@ export async function enrichRepository(
     name: repoName,
     fullName: `${username}/${repoName}`,
     htmlUrl: repo.url,
-    description: repoData?.description ?? null,
+    description: describeRepo(repoName, repoData?.description ?? null),
     stargazersCount: repoData?.stargazers_count ?? 0,
     language: repoData?.language ?? null,
     updatedAt: repoData?.pushed_at ?? null,
@@ -151,7 +152,7 @@ export async function fetchUserRepositories(): Promise<GitHubRepository[]> {
         name: r.name,
         fullName: r.full_name,
         htmlUrl: r.html_url,
-        description: r.description,
+        description: describeRepo(r.name, r.description),
         stargazersCount: r.stargazers_count,
         language: r.language,
         updatedAt: r.pushed_at,

@@ -39,8 +39,8 @@
     {
       "id": "seed-repo-001",
       "title": "Portfolio Website",
-      "repoName": "portfolio",
-      "description": "Professional ecosystem portfolio built on Next.js 14.",
+      "repoName": "Portfolio",
+      "description": "Professional ecosystem portfolio website built with Next.js 14 (App + Pages Router), TypeScript, Tailwind CSS, a Notion headless CMS, build-time GitHub enrichment, Upstash rate limiting, and incremental static regeneration.",
       "url": "https://github.com/example/portfolio",
       "stargazers": 0,
       "commitCount": 0,
