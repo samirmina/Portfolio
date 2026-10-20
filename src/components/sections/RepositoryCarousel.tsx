@@ -22,15 +22,8 @@ export function RepositoryCarousel({ repositories }: { repositories: Repo[] }) {
   }
 
   const current = repositories[index];
-  const isFirst = index === 0;
-  const isLast = index === repositories.length - 1;
-
-  const prev = () => {
-    if (!isFirst) setIndex((i) => i - 1);
-  };
-  const next = () => {
-    if (!isLast) setIndex((i) => i + 1);
-  };
+  const prev = () => setIndex((i) => (i === 0 ? repositories.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === repositories.length - 1 ? 0 : i + 1));
 
   return (
     <div className="relative">
@@ -41,16 +34,14 @@ export function RepositoryCarousel({ repositories }: { repositories: Repo[] }) {
         <div className="flex gap-3">
           <button
             onClick={prev}
-            disabled={isFirst}
-            className="w-10 h-10 rounded-md border border-[#30363d] bg-[#161b22] text-[#c9d1d9] hover:bg-[#21262d] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+            className="w-10 h-10 rounded-md border border-[#30363d] bg-[#161b22] text-[#c9d1d9] hover:bg-[#21262d] flex items-center justify-center transition-colors"
             aria-label="Previous repository"
           >
             ←
           </button>
           <button
             onClick={next}
-            disabled={isLast}
-            className="w-10 h-10 rounded-md border border-[#30363d] bg-[#161b22] text-[#c9d1d9] hover:bg-[#21262d] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+            className="w-10 h-10 rounded-md border border-[#30363d] bg-[#161b22] text-[#c9d1d9] hover:bg-[#21262d] flex items-center justify-center transition-colors"
             aria-label="Next repository"
           >
             →
