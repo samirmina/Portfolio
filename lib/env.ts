@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  NEXT_PUBLIC_SITE_URL: z.string().url(),
+  NEXT_PUBLIC_SITE_URL: z.string().url().optional().or(z.literal('')),
+
   GITHUB_USERNAME: z.string().min(1),
   NOTION_TOKEN: z.string().min(1),
   NOTION_LOGS_DB_ID: z.string().min(1),
