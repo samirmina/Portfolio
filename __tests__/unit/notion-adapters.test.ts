@@ -1,5 +1,6 @@
 import { fetchActivityLogs, fetchRepositories } from '@/lib/adapters/notion';
 import { notion, paginateNotion } from '@/lib/notion';
+import { loadSeedActivityLogs } from '@/data/seed';
 
 jest.mock('@/lib/notion', () => ({
   notion: {
@@ -48,10 +49,10 @@ describe('fetchActivityLogs', () => {
     expect(logs).toHaveLength(1);
   });
 
-  it('falls back to empty array on error', async () => {
+  it('falls back to seed data on error', async () => {
     mockPaginate.mockRejectedValue(new Error('Notion down'));
     const logs = await fetchActivityLogs();
-    expect(logs).toEqual([]);
+    expect(logs).toEqual(loadSeedActivityLogs());
   });
 });
 

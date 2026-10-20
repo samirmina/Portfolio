@@ -52,13 +52,25 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 
   try {
+    // Notion's REST API has no atomic increment, so read the current value
+    // then write it back +1 (last-write-wins on concurrency, per spec §3.3).
+    const existing = await notion.pages.retrieve({
+      page_id: parsed.data.targetId,
+    });
+    const properties = (existing as { properties?: Record<string, unknown> })
+      .properties ?? {};
+    const current = Number(
+      (properties.Approvals as { number?: number | null } | undefined)?.number
+    );
+    const approvals = Number.isFinite(current) ? current + 1 : 1;
+
     await notion.pages.update({
       page_id: parsed.data.targetId,
       properties: {
-        Approvals: { number: 1 },
+        Approvals: { number: approvals },
       },
     });
-    return NextResponse.json({ ok: true, databaseId, targetId: parsed.data.targetId });
+    return NextResponse.json({ ok: true, approvals, targetId: parsed.data.targetId });
   } catch {
     return NextResponse.json(
       { error: 'Failed to record endorsement' },

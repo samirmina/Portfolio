@@ -12,9 +12,9 @@ describe('FocusRing', () => {
     );
     const span = screen.getByRole('button').parentElement;
     expect(span).toHaveClass('focus-within:ring-2');
-    expect(span).toHaveClass('focus-within:ring-teal-400');
+    expect(span).toHaveClass('focus-within:ring-[#58a6ff]');
     expect(span).toHaveClass('focus-within:ring-offset-2');
-    expect(span).toHaveClass('focus-within:ring-offset-slate-950');
+    expect(span).toHaveClass('focus-within:ring-offset-[#0d1117]');
   });
 
   it('accepts custom className', () => {

@@ -15,6 +15,12 @@ import {
   extractSelect,
 } from '../normalizers';
 import { env } from '../../../lib/env';
+import {
+  loadSeedActivityLogs,
+  loadSeedProfessionalInsights,
+  loadSeedRepositories,
+  loadSeedDirectLineNotes,
+} from '../../data/seed';
 
 type NotionPage = Record<string, unknown>;
 
@@ -227,11 +233,11 @@ export async function fetchActivityLogs(): Promise<ActivityLog[]> {
     return await queryDatabaseExhaustive(
       env.NOTION_LOGS_DB_ID,
       mapActivityLog,
-      []
+      loadSeedActivityLogs() as unknown as ActivityLog[],
     );
   } catch (error) {
-    console.warn('Notion Activity Logs fetch failed:', error);
-    return [];
+    console.warn('Notion Activity Logs fetch failed, using seed fallback:', error);
+    return loadSeedActivityLogs() as unknown as ActivityLog[];
   }
 }
 
@@ -240,11 +246,11 @@ export async function fetchProfessionalInsights(): Promise<ProfessionalInsight[]
     return await queryDatabaseExhaustive(
       env.NOTION_INSIGHTS_DB_ID,
       mapProfessionalInsight,
-      []
+      loadSeedProfessionalInsights() as unknown as ProfessionalInsight[],
     );
   } catch (error) {
-    console.warn('Notion Professional Insights fetch failed:', error);
-    return [];
+    console.warn('Notion Professional Insights fetch failed, using seed fallback:', error);
+    return loadSeedProfessionalInsights() as unknown as ProfessionalInsight[];
   }
 }
 
@@ -253,11 +259,11 @@ export async function fetchRepositories(): Promise<Repository[]> {
     return await queryDatabaseExhaustive(
       env.NOTION_REPOS_DB_ID,
       mapRepository,
-      []
+      loadSeedRepositories() as unknown as Repository[],
     );
   } catch (error) {
-    console.warn('Notion Repositories fetch failed:', error);
-    return [];
+    console.warn('Notion Repositories fetch failed, using seed fallback:', error);
+    return loadSeedRepositories() as unknown as Repository[];
   }
 }
 
@@ -266,12 +272,12 @@ export async function fetchDirectLineNotes(): Promise<DirectLineNote[]> {
     return await queryDatabaseExhaustive(
       env.NOTION_NOTES_DB_ID,
       mapDirectLineNote,
-      [],
+      loadSeedDirectLineNotes() as unknown as DirectLineNote[],
       { filterPublished: false }
     );
   } catch (error) {
-    console.warn('Notion Direct Line fetch failed:', error);
-    return [];
+    console.warn('Notion Direct Line fetch failed, using seed fallback:', error);
+    return loadSeedDirectLineNotes() as unknown as DirectLineNote[];
   }
 }
 

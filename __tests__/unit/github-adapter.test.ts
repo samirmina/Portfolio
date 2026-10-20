@@ -81,6 +81,13 @@ describe('fetchUserRepositories', () => {
           },
         ],
       })
+      // Commit stats for repo-1 (page 1, empty list ends pagination)
+      .mockResolvedValueOnce({
+        ok: true,
+        headers: { get: () => null },
+        json: async () => [],
+      })
+      // Pagination page 2 (empty, ends listing loop)
       .mockResolvedValueOnce({
         ok: true,
         json: async () => [],

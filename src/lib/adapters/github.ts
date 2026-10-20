@@ -16,7 +16,13 @@ function githubHeaders(): HeadersInit {
 }
 
 async function githubFetch(path: string): Promise<Response> {
-  return withBackoff(() => fetch(`${GITHUB_API}${path}`, { headers: githubHeaders() }));
+  return withBackoff(() =>
+    fetch(`${GITHUB_API}${path}`, {
+      headers: githubHeaders(),
+      // Tag-based revalidation: flushes via revalidateTag('github-data').
+      next: { tags: ['github-data'] },
+    })
+  );
 }
 
 /** Parse the Link header to find the last page number for commit counting. */

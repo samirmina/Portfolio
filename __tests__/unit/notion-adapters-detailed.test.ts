@@ -8,6 +8,7 @@ import {
 } from '@/lib/adapters/notion';
 import { notion, paginateNotion } from '@/lib/notion';
 import { withBackoff } from '@/lib/backoff';
+import { loadSeedActivityLogs } from '@/data/seed';
 
 jest.mock('@/lib/notion', () => ({
   notion: {
@@ -61,10 +62,10 @@ describe('fetchActivityLogs', () => {
     expect(logs).toHaveLength(1);
   });
 
-  it('returns empty array on error', async () => {
+  it('returns seed fallback on error', async () => {
     mockPaginate.mockRejectedValue(new Error('Notion down'));
     const logs = await fetchActivityLogs();
-    expect(logs).toEqual([]);
+    expect(logs).toEqual(loadSeedActivityLogs());
   });
 });
 

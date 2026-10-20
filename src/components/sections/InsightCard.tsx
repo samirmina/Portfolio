@@ -1,6 +1,9 @@
+'use client';
+
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { MediaFacade } from '@/components/media/MediaFacade';
+import Link from 'next/link';
 
 export interface InsightCardProps {
   id: string;
@@ -29,7 +32,11 @@ export function InsightCard({
     <Card className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-[#c9d1d9]">{title}</h3>
+          <Link href={`/insights/${id}`} className="hover:underline">
+            <h3 className="text-lg font-semibold text-[#c9d1d9] hover:text-[#58a6ff] transition-colors">
+              {title}
+            </h3>
+          </Link>
           {date && (
             <time className="text-xs text-[#8b949e] mt-1 block">{date}</time>
           )}
