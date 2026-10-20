@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/Card';
 import { Section } from '@/components/ui/Section';
 import { ActivityLogCard } from '@/components/sections/ActivityLogCard';
 import { InsightCard } from '@/components/sections/InsightCard';
-import { RepositoryCarousel } from '@/components/sections/RepositoryCarousel';
+import { RepositoryCard } from '@/components/sections/RepositoryCard';
 import { fetchActivityLogs } from '@/lib/adapters/notion';
 import { fetchProfessionalInsights } from '@/lib/adapters/notion';
 import { fetchUserRepositories } from '@/lib/adapters/github';
@@ -152,7 +152,17 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
         subtitle="Public repositories from GitHub"
         viewAllHref="/repositories"
       >
-        <RepositoryCarousel repositories={repositories} />
+        {repositories.length === 0 ? (
+          <Card>
+            <p className="text-[#8b949e]">No repositories available at this time.</p>
+          </Card>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {repositories.map((repo) => (
+              <RepositoryCard key={repo.repoName} {...repo} />
+            ))}
+          </div>
+        )}
       </Section>
     </div>
   );
