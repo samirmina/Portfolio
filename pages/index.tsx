@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { ActivityLogCard } from '@/components/sections/ActivityLogCard';
 import { InsightCard } from '@/components/sections/InsightCard';
-import { RepositoryCard } from '@/components/sections/RepositoryCard';
+import { RepositoryCarousel } from '@/components/sections/RepositoryCarousel';
 import { fetchActivityLogs } from '@/lib/adapters/notion';
 import { fetchProfessionalInsights } from '@/lib/adapters/notion';
 import { fetchUserRepositories } from '@/lib/adapters/github';
@@ -186,15 +186,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
               View all →
             </Link>
           </div>
-          {repositories.length === 0 ? (
-            <p className="text-[#8b949e] py-8">No repositories found.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {repositories.map((repo) => (
-                <RepositoryCard key={repo.repoName} {...repo} />
-              ))}
-            </div>
-          )}
+          <RepositoryCarousel repositories={repositories} />
         </div>
       </section>
     </div>
