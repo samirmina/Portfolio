@@ -83,7 +83,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       {/* Hero Section */}
       <section className="py-12 sm:py-16 ">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
-          <div className="space-y-6 max-w-3xl">
+          <div className="space-y-6 max-w-3xl animate-fade-in">
             <p className="text-sm font-medium text-[#58a6ff] uppercase tracking-widest">
               Software Engineer
             </p>
