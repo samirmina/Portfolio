@@ -24,7 +24,7 @@ interface ActivityPageProps {
 
 export default function ActivityPage({ logs }: ActivityPageProps) {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="mb-12">
         <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-4">
           Activity Log

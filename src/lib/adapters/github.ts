@@ -138,8 +138,10 @@ export async function fetchUserRepositories(): Promise<GitHubRepository[]> {
     if (repos.length === 0) {
       break;
     }
-    for (const r of repos) {
-      repositories.push({
+    const enriched = await Promise.all(
+    repos.map(async (r) => {
+      const stats = await fetchCommitStats(r.full_name.split('/')[0], r.name);
+      return {
         name: r.name,
         fullName: r.full_name,
         htmlUrl: r.html_url,
@@ -147,10 +149,12 @@ export async function fetchUserRepositories(): Promise<GitHubRepository[]> {
         stargazersCount: r.stargazers_count,
         language: r.language,
         updatedAt: r.pushed_at,
-        commitCount: 0,
-        lastCommitAt: null,
-      });
-    }
+        commitCount: stats.commitCount,
+        lastCommitAt: stats.lastCommitAt,
+      };
+    })
+  );
+  repositories.push(...enriched);
     page++;
   }
 

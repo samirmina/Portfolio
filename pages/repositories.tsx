@@ -33,8 +33,8 @@ interface RepositoriesPageProps {
 
 export default function RepositoriesPage({ repositories }: RepositoriesPageProps) {
   return (
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-      <div className="mb-12">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+      <div className="mb-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           GitHub Repositories
         </h1>
@@ -50,7 +50,7 @@ export default function RepositoriesPage({ repositories }: RepositoriesPageProps
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {repositories.map((repo) => (
             <RepositoryCard
               key={repo.name}
