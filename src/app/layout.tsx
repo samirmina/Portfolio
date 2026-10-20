@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Samir Mena - Portfolio",
+  title: "Meena Samir Anees - Portfolio",
   description: "Software Engineer portfolio - Activity logs, insights, and GitHub repositories",
 };
 

@@ -29,14 +29,14 @@ export default function InsightsPage({ insights }: InsightsPageProps) {
           Professional Insights
         </h1>
         <p className="text-lg text-[#8b949e] max-w-2xl">
-          Trade-offs, challenges, and architectural decisions — synced from Notion.
+          Trade-offs, challenges, and architectural decisions.
         </p>
       </div>
 
       {insights.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-[#8b949e] text-lg">
-            No insights found. Check your Notion connection.
+            No insights available at this time.
           </p>
         </div>
       ) : (

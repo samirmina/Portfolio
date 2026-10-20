@@ -5,7 +5,7 @@ export default function Home() {
         Portfolio
       </h1>
       <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl text-center">
-        Professional ecosystem built on Next.js 14, Notion, and Upstash.
+        Professional portfolio showcasing practical experience and projects.
       </p>
       <div className="flex gap-4 sm:gap-6">
         <a

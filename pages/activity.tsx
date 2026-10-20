@@ -30,14 +30,14 @@ export default function ActivityPage({ logs }: ActivityPageProps) {
           Activity Log
         </h1>
         <p className="text-lg text-[#8b949e] max-w-2xl">
-          Recent explorations, builds, and learning notes — synced from Notion.
+          Recent explorations, builds, and learning notes.
         </p>
       </div>
 
       {logs.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-[#8b949e] text-lg">
-            No activity logs found. Check your Notion connection.
+            No activity logs available at this time.
           </p>
         </div>
       ) : (

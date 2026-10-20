@@ -39,7 +39,7 @@ export default function RepositoriesPage({ repositories }: RepositoriesPageProps
           GitHub Repositories
         </h1>
         <p className="text-lg text-[#8b949e] max-w-2xl">
-          Public repositories from GitHub — synced in real time.
+          Public repositories from GitHub.
         </p>
       </div>
 

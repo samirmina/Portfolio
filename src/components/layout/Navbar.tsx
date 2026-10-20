@@ -23,7 +23,7 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-2 font-semibold text-lg text-white tracking-tight"
           >
-            <span className="text-[#238636]">▲</span> Portfolio
+            Portfolio
           </Link>
 
           <div className="hidden md:flex items-center gap-1">

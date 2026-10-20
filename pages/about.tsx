@@ -11,16 +11,16 @@ export default function About() {
         </h1>
         <div className="space-y-6 text-lg text-[#8b949e] leading-relaxed">
           <p>
-            I&apos;m Samir Mena, a software engineer focused on building
+            I&apos;m Meena Samir Anees, a software engineer focused on building
             professional ecosystems that bridge the gap between content and code.
             My work centers on architecting scalable, accessible, and
             performant web applications using modern technologies.
           </p>
           <p>
-            This portfolio is a living document of my technical journey — from
-            architectural decisions and trade-offs to hands-on implementation
-            details. It&apos;s built on Next.js 14, powered by Notion as a CMS,
-            and secured with Upstash Redis rate limiting.
+            This portfolio showcases the full scope of my work — from web
+            applications and GitHub repositories to practical engineering
+            experience. It is built with Next.js 14, TypeScript, and modern
+            web technologies.
           </p>
           <p>
             I believe in documenting the reasoning behind every decision, not
@@ -37,7 +37,6 @@ export default function About() {
               <li>• Next.js 14 (App Router)</li>
               <li>• TypeScript (strict mode)</li>
               <li>• Tailwind CSS + Typography</li>
-              <li>• Notion API + SDK</li>
               <li>• Upstash Redis + Ratelimit</li>
               <li>• Zod validation</li>
               <li>• Jest + Testing Library</li>

@@ -79,14 +79,14 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
   return (
     <div className="space-y-0">
       {/* Hero Section */}
-      <section className="border-b border-[#30363d]">
+      <section className="">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-28">
           <div className="max-w-3xl">
             <p className="text-sm font-medium text-[#58a6ff] mb-4 uppercase tracking-wider">
               Software Engineer
             </p>
             <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-              Samir Mena
+              Meena Samir Anees
             </h1>
             <p className="text-lg text-[#8b949e] mb-10 leading-relaxed max-w-2xl">
               Building professional ecosystems with Next.js, Notion, and modern web
@@ -106,7 +106,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       </section>
 
       {/* Activity Logs Section */}
-      <section className="border-b border-[#30363d]">
+      <section className="">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -137,7 +137,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       </section>
 
       {/* Professional Insights Section */}
-      <section className="border-b border-[#30363d]">
+      <section className="">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
           <div className="flex items-center justify-between mb-8">
             <div>
