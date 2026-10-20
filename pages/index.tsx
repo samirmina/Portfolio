@@ -82,8 +82,8 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 space-y-4">
       {/* Hero Section */}
       <section className="py-12 sm:py-16 animate-fade-in">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          <div className="lg:col-span-2 space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+          <div className="space-y-6 max-w-3xl">
             <p className="text-sm font-medium text-[#58a6ff] uppercase tracking-widest">
               Software Engineer
             </p>
@@ -97,7 +97,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
               multiple languages and domains.
             </p>
           </div>
-          <div className="flex flex-col gap-4 lg:pt-16">
+          <div className="flex flex-col gap-4 lg:pb-2">
             <Button variant="primary" size="lg" asChild>
               <Link href="/contact">Get in Touch</Link>
             </Button>
