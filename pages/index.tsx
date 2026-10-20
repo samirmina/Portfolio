@@ -15,7 +15,7 @@ export async function getStaticProps() {
       fetchUserRepositories(),
     ]);
 
-    const repositories = repos.slice(0, 6).map((repo) => ({
+    const repositories = repos.map((repo) => ({
       title: repo.name,
       repoName: repo.name,
       description: repo.description || 'No description provided.',
