@@ -81,20 +81,20 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
   return (
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 space-y-4">
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 animate-fade-in">
+      <section className="py-12 sm:py-16 ">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
           <div className="space-y-6 max-w-3xl">
             <p className="text-sm font-medium text-[#58a6ff] uppercase tracking-widest">
               Software Engineer
             </p>
             <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight tracking-tight">
-              Meena Samir Anees
+              Mina Samir Anis Aziz
             </h1>
             <p className="text-xl text-[#8b949e] leading-relaxed max-w-2xl">
               Software Engineer based in Cairo, Egypt. Specializing in Java,
-              Spring Boot, and PostgreSQL — building desktop applications,
-              AI-powered tools, browser extensions, and backend systems across
-              multiple languages and domains.
+              Spring Boot, and PostgreSQL — with 5+ years across International
+              Banking and E-Commerce. Building desktop applications, AI-powered
+              tools, browser extensions, and backend systems.
             </p>
           </div>
           <div className="flex flex-col gap-4 lg:pb-2">

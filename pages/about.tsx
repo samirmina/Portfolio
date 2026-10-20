@@ -5,46 +5,53 @@ import { Button } from '@/components/ui/Button';
 export default function About() {
   return (
     <>
-      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-28">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-16 animate-fade-in tracking-tight">
+      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-10 tracking-tight">
           About
         </h1>
-        <div className="space-y-10 text-lg text-[#8b949e] leading-relaxed">
+        <div className="space-y-8 text-lg text-[#8b949e] leading-relaxed">
           <p>
-            I&apos;m Meena Samir Anees, a software engineer based in Cairo, Egypt.
-            I specialize in Java, Spring Boot, and PostgreSQL, with a strong
-            passion for clean code, backend systems, and AI integrations.
+            I&apos;m Mina Samir Anis Aziz, a software engineer based in Cairo, Egypt.
+            I specialize in Java, Spring Boot, and PostgreSQL, with 5+ years of
+            domain experience across International Banking and Global E-Commerce
+            Operations.
           </p>
           <p>
-            My work spans desktop applications, browser extensions, and backend
-            systems — from offline-first translation tools and AI-powered book
-            extractors to Zendesk automation extensions and code analysis
-            platforms. I build practical, production-ready software that solves
-            real problems.
+            My background spans HSBC Bank Egypt, Euro Exim Bank, and the National
+            Bank of Egypt, where I managed corporate banking operations, trade
+            finance, and quality auditing. I also worked in customer support
+            operations for Vodafone UK, Teleperformance (eBay German account),
+            and VXI Global Solutions (AliExpress Dutch account).
           </p>
           <p>
-            I believe in documenting the reasoning behind every decision, not
-            just the outcome. Each project reflects careful architectural
-            choices, from offline-first design to multi-service Docker
-            deployments.
+            I combine rigorous self-directed engineering studies — grounded in
+            industry benchmarks like Effective Java, Spring Starts Now, and Head
+            First Java — with hands-on experience building production-grade
+            Spring Boot microservices, RAG architectures, and AST code analyzers.
+          </p>
+          <p>
+            I&apos;m multilingual: Dutch (C1), German (C1), English (C2), and
+            Arabic (Native). Available for remote B2B contracting or European
+            relocation.
           </p>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <Card>
-            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-6">Core Expertise</h3>
-            <ul className="text-sm text-[#8b949e] space-y-2">
-              <li>• Java 21 & Spring Boot</li>
-              <li>• PostgreSQL & pgvector</li>
+            <h3 className="text-lg font-semibold text-white mb-6">Core Expertise</h3>
+            <ul className="text-sm text-[#8b949e] space-y-3">
+              <li>• Java 21 & Spring Boot 3.5</li>
+              <li>• PostgreSQL & pgvector (RAG)</li>
               <li>• JavaFX Desktop Applications</li>
               <li>• AI Integrations (Ollama, LLMs)</li>
-              <li>• Browser Extensions (Chrome/Edge)</li>
-              <li>• Docker & Containerization</li>
+              <li>• Kotlin & Ktor</li>
+              <li>• Docker Compose & DevOps</li>
+              <li>• Clean Architecture & SOLID</li>
             </ul>
           </Card>
           <Card>
-            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-6">Key Projects</h3>
-            <ul className="text-sm text-[#8b949e] space-y-2">
+            <h3 className="text-lg font-semibold text-white mb-6">Key Projects</h3>
+            <ul className="text-sm text-[#8b949e] space-y-3">
               <li>• BookMind Nexus — AI PDF extraction (Java/Spring Boot)</li>
               <li>• LLL Verifier — Offline translation tool (Java/Spring Boot/JavaFX)</li>
               <li>• CodeInsight Analyzer — Code analysis platform (Kotlin/Ktor)</li>
@@ -55,7 +62,7 @@ export default function About() {
           </Card>
         </div>
 
-        <div className="mt-20 flex gap-4">
+        <div className="mt-16 flex flex-wrap gap-4">
           <Button variant="primary" size="lg" asChild>
             <Link href="/contact">Contact Me</Link>
           </Button>
