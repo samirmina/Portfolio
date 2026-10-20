@@ -5,11 +5,11 @@ import { Button } from '@/components/ui/Button';
 export default function About() {
   return (
     <>
-      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-12 animate-fade-in tracking-tight">
+      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-28">
+        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-16 animate-fade-in tracking-tight">
           About
         </h1>
-        <div className="space-y-8 text-lg text-[#8b949e] leading-relaxed">
+        <div className="space-y-10 text-lg text-[#8b949e] leading-relaxed">
           <p>
             I&apos;m Meena Samir Anees, a software engineer based in Cairo, Egypt.
             I specialize in Java, Spring Boot, and PostgreSQL, with a strong
@@ -30,9 +30,9 @@ export default function About() {
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 gap-10">
           <Card>
-            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-4">Core Expertise</h3>
+            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-6">Core Expertise</h3>
             <ul className="text-sm text-[#8b949e] space-y-2">
               <li>• Java 21 & Spring Boot</li>
               <li>• PostgreSQL & pgvector</li>
@@ -43,7 +43,7 @@ export default function About() {
             </ul>
           </Card>
           <Card>
-            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-4">Key Projects</h3>
+            <h3 className="text-lg font-semibold text-[#c9d1d9] mb-6">Key Projects</h3>
             <ul className="text-sm text-[#8b949e] space-y-2">
               <li>• BookMind Nexus — AI PDF extraction (Java/Spring Boot)</li>
               <li>• LLL Verifier — Offline translation tool (Java/Spring Boot/JavaFX)</li>
@@ -55,7 +55,7 @@ export default function About() {
           </Card>
         </div>
 
-        <div className="mt-16 flex gap-4">
+        <div className="mt-20 flex gap-4">
           <Button variant="primary" size="lg" asChild>
             <Link href="/contact">Contact Me</Link>
           </Button>
