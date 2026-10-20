@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/Button';
 export default function About() {
   return (
     <>
-      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-12">
+      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-12 animate-fade-in tracking-tight">
           About
         </h1>
         <div className="space-y-8 text-lg text-[#8b949e] leading-relaxed">
