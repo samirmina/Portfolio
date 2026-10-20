@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { Section } from '@/components/ui/Section';
 import { ActivityLogCard } from '@/components/sections/ActivityLogCard';
 import { InsightCard } from '@/components/sections/InsightCard';
 import { RepositoryCarousel } from '@/components/sections/RepositoryCarousel';
@@ -78,10 +79,10 @@ interface HomePageProps {
 
 export default function Home({ logs, insights, repositories }: HomePageProps) {
   return (
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 space-y-16">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 space-y-4">
       {/* Hero Section */}
-      <section className="animate-fade-in">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <section className="py-12 sm:py-16 animate-fade-in">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           <div className="lg:col-span-2 space-y-6">
             <p className="text-sm font-medium text-[#58a6ff] uppercase tracking-widest">
               Software Engineer
@@ -96,7 +97,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
               multiple languages and domains.
             </p>
           </div>
-          <div className="flex flex-col gap-4 lg:pt-12">
+          <div className="flex flex-col gap-4 lg:pt-16">
             <Button variant="primary" size="lg" asChild>
               <Link href="/contact">Get in Touch</Link>
             </Button>
@@ -108,15 +109,11 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       </section>
 
       {/* Activity Logs Section */}
-      <section className="animate-slide-up">
-        <div className="mb-8">
-          <h2 className="text-3xl font-semibold text-white tracking-tight mb-2">
-            Activity Logs
-          </h2>
-          <p className="text-base text-[#8b949e]">
-            Recent explorations, builds, and learning notes
-          </p>
-        </div>
+      <Section
+        title="Activity Logs"
+        subtitle="Recent explorations, builds, and learning notes"
+        viewAllHref="/activity"
+      >
         {logs.length === 0 ? (
           <Card>
             <p className="text-[#8b949e]">No activity logs available at this time.</p>
@@ -128,26 +125,14 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
             ))}
           </div>
         )}
-        <div className="mt-6">
-          <Link
-            href="/activity"
-            className="text-[#58a6ff] hover:text-[#79c0ff] text-sm font-medium transition-colors"
-          >
-            View all activity logs →
-          </Link>
-        </div>
-      </section>
+      </Section>
 
       {/* Professional Insights Section */}
-      <section className="animate-slide-up">
-        <div className="mb-8">
-          <h2 className="text-3xl font-semibold text-white tracking-tight mb-2">
-            Professional Insights
-          </h2>
-          <p className="text-base text-[#8b949e]">
-            Technical deep-dives and architectural decisions
-          </p>
-        </div>
+      <Section
+        title="Professional Insights"
+        subtitle="Technical deep-dives and architectural decisions"
+        viewAllHref="/insights"
+      >
         {insights.length === 0 ? (
           <Card>
             <p className="text-[#8b949e]">No insights available at this time.</p>
@@ -159,36 +144,16 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
             ))}
           </div>
         )}
-        <div className="mt-6">
-          <Link
-            href="/insights"
-            className="text-[#58a6ff] hover:text-[#79c0ff] text-sm font-medium transition-colors"
-          >
-            View all insights →
-          </Link>
-        </div>
-      </section>
+      </Section>
 
       {/* GitHub Repositories Section */}
-      <section className="animate-slide-up">
-        <div className="mb-8">
-          <h2 className="text-3xl font-semibold text-white tracking-tight mb-2">
-            GitHub Repositories
-          </h2>
-          <p className="text-base text-[#8b949e]">
-            Public repositories from GitHub
-          </p>
-        </div>
+      <Section
+        title="GitHub Repositories"
+        subtitle="Public repositories from GitHub"
+        viewAllHref="/repositories"
+      >
         <RepositoryCarousel repositories={repositories} />
-        <div className="mt-6">
-          <Link
-            href="/repositories"
-            className="text-[#58a6ff] hover:text-[#79c0ff] text-sm font-medium transition-colors"
-          >
-            View all repositories →
-          </Link>
-        </div>
-      </section>
+      </Section>
     </div>
   );
 }
