@@ -11,16 +11,16 @@ export default function About() {
         </h1>
         <div className="space-y-6 text-lg text-[#8b949e] leading-relaxed">
           <p>
-            I&apos;m Meena Samir Anees, a software engineer focused on building
-            professional ecosystems that bridge the gap between content and code.
-            My work centers on architecting scalable, accessible, and
-            performant web applications using modern technologies.
+            I&apos;m Meena Samir Anees, a software engineer based in Cairo, Egypt.
+            I specialize in Java, Spring Boot, and PostgreSQL, with a strong
+            passion for clean code, backend systems, and AI integrations.
           </p>
           <p>
-            This portfolio showcases the full scope of my work — from web
-            applications and GitHub repositories to practical engineering
-            experience. It is built with Next.js 14, TypeScript, and modern
-            web technologies.
+            My work spans multiple languages and domains — from Java and
+            Spring Boot backends to TypeScript and Python projects, including
+            AI-powered tools and Android development with Kotlin. I believe
+            in documenting the reasoning behind every decision, not just the
+            outcome.
           </p>
           <p>
             I believe in documenting the reasoning behind every decision, not
@@ -34,23 +34,23 @@ export default function About() {
           <Card>
             <h3 className="text-lg font-semibold text-[#c9d1d9] mb-4">Tech Stack</h3>
             <ul className="text-sm text-[#8b949e] space-y-2">
-              <li>• Next.js 14 (App Router)</li>
-              <li>• TypeScript (strict mode)</li>
-              <li>• Tailwind CSS + Typography</li>
-              <li>• Upstash Redis + Ratelimit</li>
-              <li>• Zod validation</li>
-              <li>• Jest + Testing Library</li>
+              <li>• Java & Spring Boot</li>
+              <li>• PostgreSQL & Databases</li>
+              <li>• TypeScript & JavaScript</li>
+              <li>• Kotlin & Android</li>
+              <li>• C & Systems Programming</li>
+              <li>• Clean Code & Architecture</li>
             </ul>
           </Card>
           <Card>
             <h3 className="text-lg font-semibold text-[#c9d1d9] mb-4">Principles</h3>
             <ul className="text-sm text-[#8b949e] space-y-2">
-              <li>• Accessibility first (WCAG 2.1 AA)</li>
-              <li>• Security by default (CSP, rate limiting)</li>
-              <li>• Test-driven development (80%+ coverage)</li>
-              <li>• Documentation as a first-class citizen</li>
-              <li>• Progressive enhancement</li>
-              <li>• Performance optimization</li>
+              <li>• Clean code and maintainability</li>
+              <li>• Backend systems and APIs</li>
+              <li>• AI integrations and tooling</li>
+              <li>• Continuous learning and growth</li>
+              <li>• Open source contributions</li>
+              <li>• Professional collaboration</li>
             </ul>
           </Card>
         </div>

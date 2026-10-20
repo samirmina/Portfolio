@@ -89,9 +89,10 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
               Meena Samir Anees
             </h1>
             <p className="text-lg text-[#8b949e] mb-10 leading-relaxed max-w-2xl">
-              Building professional ecosystems with Next.js, Notion, and modern web
-              technologies. Exploring, learning, and sharing knowledge through
-              activity logs and technical insights.
+              Software Engineer specializing in Java, Spring Boot, and
+              PostgreSQL. Passionate about clean code, backend systems, and
+              AI integrations. Building practical solutions across multiple
+              languages and domains.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button variant="primary" size="lg" asChild>
