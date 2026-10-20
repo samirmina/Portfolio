@@ -1,36 +1,39 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { fetchActivityLogs, fetchPageWithBlocks } from '@/lib/adapters/notion';
 import { extractTitle, extractRichText } from '@/lib/normalizers';
 
 interface ActivityPageProps {
-  params: { id: string };
+  id: string;
+  page: Record<string, unknown>;
+  blocks: Record<string, unknown>[];
 }
 
-export async function generateStaticParams() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const logs = await fetchActivityLogs();
-  return logs.map((log) => ({ id: log.id }));
-}
-
-export async function generateMetadata({
-  params,
-}: ActivityPageProps): Promise<Metadata> {
-  const { page } = await fetchPageWithBlocks(params.id);
-  const title = extractTitle(
-    (page.properties as Record<string, unknown>).Title as {
-      title?: { plain_text: string }[];
-    } | null
-  );
   return {
-    title: title ? `${title} — Activity Log` : 'Activity Log',
-    description: extractRichText(
-      (page.properties as Record<string, unknown>).Summary as {
-        rich_text?: { plain_text: string }[];
-      } | null
-    ),
+    paths: logs.map((log) => ({ params: { id: log.id } })),
+    fallback: 'blocking',
   };
-}
+};
+
+export const getStaticProps: GetStaticProps<ActivityPageProps> = async (context) => {
+  const rawId = context.params?.id;
+  if (!rawId || Array.isArray(rawId)) {
+    return { notFound: true };
+  }
+  const id = rawId;
+
+  try {
+    const { page, blocks } = await fetchPageWithBlocks(id);
+    return {
+      props: { id, page, blocks },
+      revalidate: 3600,
+    };
+  } catch {
+    return { notFound: true };
+  }
+};
 
 function renderBlocks(blocks: Record<string, unknown>[]) {
   return blocks.map((block, index) => {
@@ -86,7 +89,8 @@ function renderBlocks(blocks: Record<string, unknown>[]) {
         return (
           <pre key={index} className="bg-[#0d1117] border border-[#30363d] rounded-lg p-4 my-4 overflow-x-auto">
             <code className="text-sm text-[#c9d1d9] font-mono">
-              {language ? `// ${language}\n` : ''}{text.map((t) => t.plain_text).join('')}
+              {language ? `// ${language}\n` : ''}
+              {text.map((t) => t.plain_text).join('')}
             </code>
           </pre>
         );
@@ -108,7 +112,9 @@ function renderBlocks(blocks: Record<string, unknown>[]) {
         return (
           <div key={index} className="flex items-start gap-3 my-2 text-[#8b949e]">
             <span className="mt-1">{checked ? '☑' : '☐'}</span>
-            <span className="leading-relaxed">{text.map((t) => t.plain_text).join('')}</span>
+            <span className="leading-relaxed">
+              {text.map((t) => t.plain_text).join('')}
+            </span>
           </div>
         );
       }
@@ -125,22 +131,20 @@ function renderBlocks(blocks: Record<string, unknown>[]) {
   });
 }
 
-export default async function ActivityDetailPage({ params }: ActivityPageProps) {
-  let page: Record<string, unknown>;
-  let blocks: Record<string, unknown>[];
-  try {
-    ({ page, blocks } = await fetchPageWithBlocks(params.id));
-  } catch {
-    notFound();
-  }
-
+export default function ActivityDetailPage({ page, blocks }: ActivityPageProps) {
   const properties = page.properties as Record<string, unknown>;
-  const title = extractTitle(properties.Title as { title?: { plain_text: string }[] } | null);
-  const summary = extractRichText(properties.Summary as { rich_text?: { plain_text: string }[] } | null);
-  const date = (properties.Date as { date?: { start?: string | null } | null } | null)?.date?.start ?? null;
+  const title = extractTitle(
+    properties.Title as { title?: { plain_text: string }[] } | null
+  );
+  const summary = extractRichText(
+    properties.Summary as { rich_text?: { plain_text: string }[] } | null
+  );
+  const date = (
+    properties.Date as { date?: { start?: string | null } | null } | null
+  )?.date?.start ?? null;
 
   if (!title) {
-    notFound();
+    return null;
   }
 
   return (
@@ -157,9 +161,7 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">
             {title}
           </h1>
-          {date && (
-            <time className="text-sm text-[#8b949e]">{date}</time>
-          )}
+          {date && <time className="text-sm text-[#8b949e]">{date}</time>}
         </header>
 
         {summary && (
