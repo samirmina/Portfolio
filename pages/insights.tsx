@@ -23,9 +23,9 @@ interface InsightsPageProps {
 
 export default function InsightsPage({ insights }: InsightsPageProps) {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-4">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+      <div className="mb-16">
+        <h1 className="text-4xl sm:text-5xl font-bold text-[#c9d1d9] mb-6">
           Professional Insights
         </h1>
         <p className="text-lg text-[#8b949e] max-w-2xl">
@@ -40,7 +40,7 @@ export default function InsightsPage({ insights }: InsightsPageProps) {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-8">
           {insights.map((insight) => (
             <InsightCard key={insight.id} {...insight} />
           ))}

@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <footer className="border-t border-[#30363d] bg-[#0d1117]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-[#8b949e]">
           <div className="flex items-center gap-2">
             <span>Portfolio © {new Date().getFullYear()} Meena Samir Anees</span>

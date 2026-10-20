@@ -26,7 +26,7 @@ export function InsightCard({
   date,
 }: InsightCardProps) {
   return (
-    <Card className="flex flex-col gap-4">
+    <Card className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-[#c9d1d9]">{title}</h3>
@@ -38,7 +38,7 @@ export function InsightCard({
           {approvals} endorsements
         </span>
       </div>
-      <p className="text-sm text-[#c9d1d9] leading-relaxed">{context}</p>
+      <p className="text-sm text-[#8b949e] leading-relaxed">{context}</p>
       {challenges.length > 0 && (
         <div>
           <h4 className="text-xs font-semibold text-[#8b949e] uppercase tracking-wider mb-2">

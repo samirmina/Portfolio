@@ -31,7 +31,7 @@ export function MediaFacade({
     <div
       ref={containerRef}
       className={
-        `relative aspect-video rounded-lg border border-slate-700 bg-slate-900 overflow-hidden ${className ?? ''}`
+        `relative aspect-video rounded-lg border border-[#30363d] bg-[#161b22] overflow-hidden ${className ?? ''}`
       }
       onClick={handleActivate}
       onKeyDown={(e) => {
@@ -47,9 +47,9 @@ export function MediaFacade({
       aria-haspopup="dialog"
     >
       {!loaded ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-slate-400 hover:text-teal-400 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-[#8b949e] hover:text-[#58a6ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#58a6ff] focus:ring-offset-2 focus:ring-offset-[#0d1117]">
           <svg
-            className="w-12 h-12 mb-4 text-teal-400"
+            className="w-12 h-12 mb-4 text-[#58a6ff]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

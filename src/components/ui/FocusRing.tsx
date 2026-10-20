@@ -9,7 +9,7 @@ export interface FocusRingProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * Visible focus ring per WCAG 2.1 AA:
- * ring-2 ring-teal-400 ring-offset-2 ring-offset-slate-950
+ * ring-2 ring-[#58a6ff] ring-offset-2 ring-offset-[#0d1117]
  * Only visible on keyboard focus (:focus-visible), not on mouse click.
  */
 export function FocusRing({
@@ -20,7 +20,7 @@ export function FocusRing({
   return (
     <span
       className={cn(
-        'inline-block focus-within:outline-none focus-within:ring-2 focus-within:ring-teal-400 focus-within:ring-offset-2 focus-within:ring-offset-slate-950 rounded-md',
+        'inline-block focus-within:outline-none focus-within:ring-2 focus-within:ring-[#58a6ff] focus-within:ring-offset-2 focus-within:ring-offset-[#0d1117] rounded-md',
         className
       )}
       {...props}

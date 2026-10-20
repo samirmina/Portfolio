@@ -22,10 +22,10 @@ export function ActivityLogCard({
   date,
 }: ActivityLogCardProps) {
   return (
-    <Card className="flex flex-col gap-4">
+    <Card className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-[#c9d1d9]">{title}</h3>
+          <h3 className="text-lg font-semibold text-white">{title}</h3>
           {date && (
             <time className="text-xs text-[#8b949e] mt-1 block">{date}</time>
           )}

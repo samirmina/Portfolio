@@ -200,8 +200,8 @@ export function FeedbackDrawer({
           aria-modal="true"
           aria-label="Direct Line feedback"
         >
-          <div className="flex-1 flex flex-col bg-slate-950 border-l border-slate-800 transform translate-x-0 transition-transform duration-300">
-            <div className="p-6 border-b border-slate-800 flex items-center justify-between">
+          <div className="flex-1 flex flex-col bg-[#0d1117] border-l border-[#30363d] transform translate-x-0 transition-transform duration-300">
+            <div className="p-6 border-b border-[#30363d] flex items-center justify-between">
               <h2 className="text-lg font-semibold text-white">
                 Direct Line
               </h2>
@@ -209,7 +209,7 @@ export function FeedbackDrawer({
                 variant="ghost"
                 size="sm"
                 onClick={onClose}
-                className="focus-visible:ring-offset-slate-950"
+                className="focus-visible:ring-offset-[#0d1117]"
               >
                 Close
               </Button>
@@ -217,7 +217,7 @@ export function FeedbackDrawer({
 
             <form onSubmit={handleSubmit} className="p-6 space-y-6 overflow-y-auto max-h-[85vh]">
               <div className="space-y-2">
-                <label htmlFor="messageTitle" className="block text-sm font-medium text-slate-300">
+                <label htmlFor="messageTitle" className="block text-sm font-medium text-[#8b949e]">
                   Message Title
                 </label>
                 <input
@@ -228,7 +228,7 @@ export function FeedbackDrawer({
                   onChange={handleChange}
                   onBlur={(e) => setTouched((p) => ({ ...p, [e.target.name]: true }))}
                   className={cn(
-                    'w-full px-3 py-2 rounded border text-slate-200 placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:border-teal-400 bg-slate-900/50',
+                    'w-full px-3 py-2 rounded border text-[#c9d1d9] placeholder-[#484f58] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff] focus-visible:border-[#58a6ff] bg-[#161b22]',
                     getFieldError('messageTitle') && 'border-red-500'
                   )}
                   placeholder="e.g. Project inquiry"
@@ -240,7 +240,7 @@ export function FeedbackDrawer({
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="messageBody" className="block text-sm font-medium text-slate-300">
+                <label htmlFor="messageBody" className="block text-sm font-medium text-[#8b949e]">
                   Message
                 </label>
                 <textarea
@@ -251,7 +251,7 @@ export function FeedbackDrawer({
                   onChange={handleChange}
                   onBlur={(e) => setTouched((p) => ({ ...p, [e.target.name]: true }))}
                   className={cn(
-                    'w-full px-3 py-2 rounded border text-slate-200 placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:border-teal-400 bg-slate-900/50',
+                    'w-full px-3 py-2 rounded border text-[#c9d1d9] placeholder-[#484f58] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff] focus-visible:border-[#58a6ff] bg-[#161b22]',
                     getFieldError('messageBody') && 'border-red-500'
                   )}
                   placeholder="Tell us about your project or question..."
@@ -263,7 +263,7 @@ export function FeedbackDrawer({
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="authorName" className="block text-sm font-medium text-slate-300">
+                <label htmlFor="authorName" className="block text-sm font-medium text-[#8b949e]">
                   Your Name
                 </label>
                 <input
@@ -274,7 +274,7 @@ export function FeedbackDrawer({
                   onChange={handleChange}
                   onBlur={(e) => setTouched((p) => ({ ...p, [e.target.name]: true }))}
                   className={cn(
-                    'w-full px-3 py-2 rounded border text-slate-200 placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:border-teal-400 bg-slate-900/50',
+                    'w-full px-3 py-2 rounded border text-[#c9d1d9] placeholder-[#484f58] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff] focus-visible:border-[#58a6ff] bg-[#161b22]',
                     getFieldError('authorName') && 'border-red-500'
                   )}
                   placeholder="e.g. Jane Doe"
@@ -286,7 +286,7 @@ export function FeedbackDrawer({
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="authorContact" className="block text-sm font-medium text-slate-300">
+                <label htmlFor="authorContact" className="block text-sm font-medium text-[#8b949e]">
                   Contact (email or handle)
                 </label>
                 <input
@@ -297,7 +297,7 @@ export function FeedbackDrawer({
                   onChange={handleChange}
                   onBlur={(e) => setTouched((p) => ({ ...p, [e.target.name]: true }))}
                   className={cn(
-                    'w-full px-3 py-2 rounded border text-slate-200 placeholder-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:border-teal-400 bg-slate-900/50',
+                    'w-full px-3 py-2 rounded border text-[#c9d1d9] placeholder-[#484f58] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff] focus-visible:border-[#58a6ff] bg-[#161b22]',
                     getFieldError('authorContact') && 'border-red-500'
                   )}
                   placeholder="e.g. jane@example.com"
@@ -309,7 +309,7 @@ export function FeedbackDrawer({
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="type" className="block text-sm font-medium text-slate-300">
+                <label htmlFor="type" className="block text-sm font-medium text-[#8b949e]">
                   Type
                 </label>
                 <select
@@ -317,7 +317,7 @@ export function FeedbackDrawer({
                   name="type"
                   value={form.type}
                   onChange={handleTypeChange}
-                  className="w-full px-3 py-2 rounded border text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:border-teal-400 bg-slate-900/50"
+                  className="w-full px-3 py-2 rounded border text-[#c9d1d9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff] focus-visible:border-[#58a6ff] bg-[#161b22]"
                 >
                   <option value="DIRECT_LINE">Direct Line</option>
                   <option value="OPINION">Opinion</option>
@@ -330,7 +330,7 @@ export function FeedbackDrawer({
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row sm:justify-end gap-4 pt-4 border-t border-slate-800">
+              <div className="flex flex-col sm:flex-row sm:justify-end gap-4 pt-4 border-t border-[#30363d]">
                 <Button
                   type="button"
                   variant="outline"
@@ -350,7 +350,7 @@ export function FeedbackDrawer({
             </form>
 
             {submitStatus === 'success' && (
-              <div className="p-6 bg-teal-900/20 border border-teal-500/30 rounded-b-xl text-teal-300 text-center">
+              <div className="p-6 bg-[#238636]/10 border border-[#238636]/20 rounded-b-xl text-[#238636] text-center">
                 <p className="font-medium">Message sent successfully.</p>
                 <Button
                   variant="outline"
