@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Icon } from '@/components/ui/Icon';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
@@ -17,32 +16,32 @@ export default function About() {
   const projects = [
     {
       title: 'BookMind Nexus',
-      description: 'AI PDF extraction (Java/Spring Boot)',
+      description: 'AI PDF extraction',
       url: 'https://github.com/samirmina/bookmind-nexus',
     },
     {
       title: 'LLL Verifier',
-      description: 'Offline translation tool (Java/Spring Boot/JavaFX)',
+      description: 'Offline translation tool',
       url: 'https://github.com/samirmina/lll-verifier',
     },
     {
       title: 'CodeInsight Analyzer',
-      description: 'Code analysis platform (Kotlin/Ktor)',
+      description: 'Code analysis platform',
       url: 'https://github.com/samirmina/codeinsight-analyzer',
     },
     {
       title: 'Chronos',
-      description: 'Pomodoro task manager (Java/JavaFX)',
+      description: 'Pomodoro task manager',
       url: 'https://github.com/samirmina/chronos',
     },
     {
       title: 'Gek',
-      description: 'Voice translation desktop app (Python)',
+      description: 'Voice translation desktop app',
       url: 'https://github.com/samirmina/gek',
     },
     {
       title: 'Zendesk Extensions',
-      description: 'Browser extensions (JavaScript)',
+      description: 'Browser extensions',
       url: 'https://github.com/samirmina/zendesk-extensions',
     },
   ];
@@ -81,23 +80,22 @@ export default function About() {
         </div>
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <Card>
+          <Card className="p-6">
             <h3 className="text-lg font-semibold text-white mb-6">Core Expertise</h3>
             <div className="flex flex-wrap gap-2">
               {expertise.map((tag) => (
                 <span
                   key={tag}
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#21262d] border border-[#30363d] text-xs text-[#c9d1d9]"
+                  className="px-2.5 py-1 rounded-full bg-[#21262d] border border-[#30363d] text-xs text-[#c9d1d9]"
                 >
-                  <Icon name="language" className="w-3 h-3 text-[#58a6ff]" />
                   {tag}
                 </span>
               ))}
             </div>
           </Card>
-          <Card>
+          <Card className="p-6">
             <h3 className="text-lg font-semibold text-white mb-6">Key Projects</h3>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {projects.map((project) => (
                 <Link
                   key={project.title}
@@ -105,15 +103,16 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Card className="p-5 hover:bg-[#161b22]/50 transition-colors cursor-pointer group">
+                  <Card className="p-4 hover:bg-[#161b22]/50 transition-colors cursor-pointer group">
                     <div className="flex items-start justify-between">
-                      <div>
-                        <h4 className="text-lg font-semibold text-white group-hover:text-[#58a6ff] transition-colors">
+                      <div className="flex-1">
+                        <h4 className="text-sm font-semibold text-white group-hover:text-[#58a6ff] transition-colors">
                           {project.title}
                         </h4>
-                        <p className="text-xs text-[#8b949e] mt-1">{project.description}</p>
+                        <p className="text-xs text-[#8b949e] mt-0.5">
+                          {project.description}
+                        </p>
                       </div>
-                      <Icon name="external" className="w-4 h-4 text-[#58a6ff]" />
                     </div>
                   </Card>
                 </Link>
