@@ -1,6 +1,18 @@
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
+/** Format a date deterministically (locale-independent) to avoid hydration
+ * mismatches: the server and client can otherwise disagree on locale-based
+ * formatting like toLocaleDateString(). */
+function formatCommitDate(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  const y = date.getUTCFullYear();
+  const m = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(date.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 export interface RepositoryCardProps {
   title: string;
   repoName: string;
@@ -38,7 +50,7 @@ export function RepositoryCard({
         <span>⭐ {stargazers} stars</span>
         <span>📝 {commitCount} commits</span>
         {lastCommitAt && (
-          <span>📅 Last: {new Date(lastCommitAt).toLocaleDateString()}</span>
+          <span>📅 Last: {formatCommitDate(lastCommitAt)}</span>
         )}
       </div>
       <div className="mt-auto">
