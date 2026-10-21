@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Section } from '@/components/ui/Section';
+import { SearchField } from '@/components/ui/SearchField';
 import { ActivityLogCard } from '@/components/sections/ActivityLogCard';
 import { InsightCard } from '@/components/sections/InsightCard';
 import { RepositoryCard } from '@/components/sections/RepositoryCard';
@@ -108,12 +109,17 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
         </div>
       </section>
 
+      {/* Search — explanatory text for each section is embedded inside the field. */}
+      <SearchField
+        hints={[
+          { label: 'Activity Logs', text: 'Recent explorations, builds, and learning notes.' },
+          { label: 'Professional Insights', text: 'Technical deep-dives and architectural decisions.' },
+          { label: 'GitHub Repositories', text: 'Public repositories from GitHub.' },
+        ]}
+      />
+
       {/* Activity Logs Section */}
-      <Section
-        title="Activity Logs"
-        subtitle="Recent explorations, builds, and learning notes"
-        viewAllHref="/activity"
-      >
+      <Section title="Activity Logs" viewAllHref="/activity">
         {logs.length === 0 ? (
           <Card>
             <p className="text-[#8b949e]">No activity logs available at this time.</p>
@@ -128,11 +134,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       </Section>
 
       {/* Professional Insights Section */}
-      <Section
-        title="Professional Insights"
-        subtitle="Technical deep-dives and architectural decisions"
-        viewAllHref="/insights"
-      >
+      <Section title="Professional Insights" viewAllHref="/insights">
         {insights.length === 0 ? (
           <Card>
             <p className="text-[#8b949e]">No insights available at this time.</p>
@@ -147,11 +149,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
       </Section>
 
       {/* GitHub Repositories Section */}
-      <Section
-        title="GitHub Repositories"
-        subtitle="Public repositories from GitHub"
-        viewAllHref="/repositories"
-      >
+      <Section title="GitHub Repositories" viewAllHref="/repositories">
         {repositories.length === 0 ? (
           <Card>
             <p className="text-[#8b949e]">No repositories available at this time.</p>
