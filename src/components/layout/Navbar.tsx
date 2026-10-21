@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import { Icon, IconName } from '@/components/ui/Icon';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/activity', label: 'Activity' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/repositories', label: 'Repositories' },
-  { href: '/about', label: 'About' },
+const navLinks: { href: string; label: string; icon: IconName }[] = [
+  { href: '/', label: 'Home', icon: 'home' },
+  { href: '/activity', label: 'Activity', icon: 'activity' },
+  { href: '/insights', label: 'Insights', icon: 'insights' },
+  { href: '/repositories', label: 'Repositories', icon: 'repositories' },
+  { href: '/about', label: 'About', icon: 'about' },
 ];
 
 export function Navbar() {
@@ -33,6 +34,7 @@ export function Navbar() {
                 href={link.href}
                 className="px-3 py-2 text-sm font-medium text-[#8b949e] hover:text-white hover:bg-[#161b22] rounded-md transition-colors"
               >
+                <Icon name={link.icon} className="w-4 h-4 mr-1.5" />
                 {link.label}
               </Link>
             ))}
@@ -85,6 +87,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="px-4 py-2 text-sm font-medium text-[#8b949e] hover:bg-[#161b22] hover:text-white rounded-md transition-colors"
                 >
+                  <Icon name={link.icon} className="w-4 h-4 mr-2" />
                   {link.label}
                 </Link>
               ))}

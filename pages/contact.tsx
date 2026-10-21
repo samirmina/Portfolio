@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { FeedbackDrawer } from '@/components/feedback/FeedbackDrawer';
+import { Icon } from '@/components/ui/Icon';
 
 export default function Contact() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -20,7 +21,10 @@ export default function Contact() {
 
       <div className="mb-8">
         <Button variant="primary" size="lg" onClick={() => setIsDrawerOpen(true)}>
-          Send a Message
+          <span className="flex items-center gap-1">
+            <Icon name="mail" className="w-4 h-4" />
+            Send a Message
+          </span>
         </Button>
       </div>
 

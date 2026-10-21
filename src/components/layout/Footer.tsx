@@ -4,6 +4,8 @@
 // client clocks and triggers a hydration mismatch.
 const CURRENT_YEAR = new Date().getFullYear();
 
+import { Icon } from '@/components/ui/Icon';
+
 export function Footer() {
   return (
     <footer className="border-t border-[#30363d] bg-[#0d1117]">
@@ -15,18 +17,20 @@ export function Footer() {
           <div className="flex gap-4">
             <a
               href="https://github.com/samirmina"
-              className="hover:text-[#58a6ff] transition-colors"
+              className="flex items-center gap-1 hover:text-[#58a6ff] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
+              <Icon name="github" className="w-4 h-4" />
               GitHub
             </a>
             <a
               href="https://linkedin.com/in/mina-anees-2969b413b"
-              className="hover:text-[#58a6ff] transition-colors"
+              className="flex items-center gap-1 hover:text-[#58a6ff] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
+              <Icon name="linkedin" className="w-4 h-4" />
               LinkedIn
             </a>
           </div>
