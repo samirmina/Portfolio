@@ -1,8 +1,52 @@
 import Link from 'next/link';
+import { Icon } from '@/components/ui/Icon';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
 export default function About() {
+  const expertise = [
+    'Java 21 & Spring Boot 3.5',
+    'PostgreSQL & pgvector (RAG)',
+    'JavaFX Desktop Applications',
+    'AI Integrations (Ollama, LLMs)',
+    'Kotlin & Ktor',
+    'Docker Compose & DevOps',
+    'Clean Architecture & SOLID',
+  ];
+
+  const projects = [
+    {
+      title: 'BookMind Nexus',
+      description: 'AI PDF extraction (Java/Spring Boot)',
+      url: 'https://github.com/samirmina/bookmind-nexus',
+    },
+    {
+      title: 'LLL Verifier',
+      description: 'Offline translation tool (Java/Spring Boot/JavaFX)',
+      url: 'https://github.com/samirmina/lll-verifier',
+    },
+    {
+      title: 'CodeInsight Analyzer',
+      description: 'Code analysis platform (Kotlin/Ktor)',
+      url: 'https://github.com/samirmina/codeinsight-analyzer',
+    },
+    {
+      title: 'Chronos',
+      description: 'Pomodoro task manager (Java/JavaFX)',
+      url: 'https://github.com/samirmina/chronos',
+    },
+    {
+      title: 'Gek',
+      description: 'Voice translation desktop app (Python)',
+      url: 'https://github.com/samirmina/gek',
+    },
+    {
+      title: 'Zendesk Extensions',
+      description: 'Browser extensions (JavaScript)',
+      url: 'https://github.com/samirmina/zendesk-extensions',
+    },
+  ];
+
   return (
     <>
       <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
@@ -39,26 +83,42 @@ export default function About() {
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <Card>
             <h3 className="text-lg font-semibold text-white mb-6">Core Expertise</h3>
-            <ul className="text-sm text-[#8b949e] space-y-3">
-              <li>• Java 21 & Spring Boot 3.5</li>
-              <li>• PostgreSQL & pgvector (RAG)</li>
-              <li>• JavaFX Desktop Applications</li>
-              <li>• AI Integrations (Ollama, LLMs)</li>
-              <li>• Kotlin & Ktor</li>
-              <li>• Docker Compose & DevOps</li>
-              <li>• Clean Architecture & SOLID</li>
-            </ul>
+            <div className="flex flex-wrap gap-2">
+              {expertise.map((tag) => (
+                <span
+                  key={tag}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#21262d] border border-[#30363d] text-xs text-[#c9d1d9]"
+                >
+                  <Icon name="language" className="w-3 h-3 text-[#58a6ff]" />
+                  {tag}
+                </span>
+              ))}
+            </div>
           </Card>
           <Card>
             <h3 className="text-lg font-semibold text-white mb-6">Key Projects</h3>
-            <ul className="text-sm text-[#8b949e] space-y-3">
-              <li>• BookMind Nexus — AI PDF extraction (Java/Spring Boot)</li>
-              <li>• LLL Verifier — Offline translation tool (Java/Spring Boot/JavaFX)</li>
-              <li>• CodeInsight Analyzer — Code analysis platform (Kotlin/Ktor)</li>
-              <li>• Chronos — Pomodoro task manager (Java/JavaFX)</li>
-              <li>• Gek — Voice translation desktop app (Python)</li>
-              <li>• Zendesk extensions (JavaScript)</li>
-            </ul>
+            <div className="space-y-4">
+              {projects.map((project) => (
+                <Link
+                  key={project.title}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Card className="p-5 hover:bg-[#161b22]/50 transition-colors cursor-pointer group">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="text-lg font-semibold text-white group-hover:text-[#58a6ff] transition-colors">
+                          {project.title}
+                        </h4>
+                        <p className="text-xs text-[#8b949e] mt-1">{project.description}</p>
+                      </div>
+                      <Icon name="external" className="w-4 h-4 text-[#58a6ff]" />
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </Card>
         </div>
 

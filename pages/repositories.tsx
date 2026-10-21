@@ -55,7 +55,6 @@ export default function RepositoriesPage({ repositories }: RepositoriesPageProps
             <RepositoryCard
               key={repo.name}
               title={repo.name}
-              repoName={repo.name}
               description={repo.description || 'No description provided.'}
               url={repo.htmlUrl}
               stargazers={repo.stargazersCount}

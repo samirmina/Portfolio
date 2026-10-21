@@ -21,7 +21,6 @@ export async function getStaticProps() {
 
     const repositories = repos.map((repo) => ({
       title: repo.name,
-      repoName: repo.name,
       description: repo.description || 'No description provided.',
       url: repo.htmlUrl,
       stargazers: repo.stargazersCount,
@@ -69,7 +68,6 @@ interface HomePageProps {
   }[];
   repositories: {
     title: string;
-    repoName: string;
     description: string;
     url: string;
     stargazers: number;
@@ -249,7 +247,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredRepositories.map((repo) => (
-                <RepositoryCard key={repo.repoName} {...repo} />
+                <RepositoryCard key={repo.title} {...repo} />
               ))}
             </div>
           )
@@ -261,7 +259,7 @@ export default function Home({ logs, insights, repositories }: HomePageProps) {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {repositories.map((repo) => (
-                <RepositoryCard key={repo.repoName} {...repo} />
+                <RepositoryCard key={repo.title} {...repo} />
               ))}
             </div>
           )
