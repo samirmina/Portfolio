@@ -59,5 +59,6 @@
       "type": "OPINION",
       "targetId": null
     }
-  ]
+  ],
+  "searchRequests": []
 }

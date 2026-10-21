@@ -20,6 +20,7 @@ import {
   loadSeedProfessionalInsights,
   loadSeedRepositories,
   loadSeedDirectLineNotes,
+  loadSeedSearchRequests,
 } from '../../data/seed';
 
 type NotionPage = Record<string, unknown>;
@@ -197,6 +198,30 @@ function mapRepository(page: NotionPage): Repository | null {
   };
 }
 
+export interface SearchRequest {
+  id: string;
+  title: string;
+  searchedAt: string | null;
+}
+
+/** Map a raw Notion page to a SearchRequest. */
+function mapSearchRequest(page: NotionPage): SearchRequest | null {
+  const properties = page.properties as Record<string, unknown>;
+  const title = extractTitle(
+    properties.Title as { title?: { plain_text: string }[] } | null
+  );
+  if (!title) {
+    return null;
+  }
+  return {
+    id: page.id as string,
+    title,
+    searchedAt: extractDate(
+      properties.SearchedAt as { date?: { start?: string | null } | null } | null
+    ),
+  };
+}
+
 /** Map a raw Notion page to a DirectLineNote. */
 function mapDirectLineNote(page: NotionPage): DirectLineNote | null {
   const properties = page.properties as Record<string, unknown>;
@@ -257,7 +282,7 @@ export async function fetchProfessionalInsights(): Promise<ProfessionalInsight[]
 export async function fetchRepositories(): Promise<Repository[]> {
   try {
     return await queryDatabaseExhaustive(
-      env.NOTION_REPOS_DB_ID,
+      env.NOTION_SEARCH_REQUESTS_DB_ID!,
       mapRepository,
       loadSeedRepositories() as unknown as Repository[],
     );
@@ -279,6 +304,44 @@ export async function fetchDirectLineNotes(): Promise<DirectLineNote[]> {
     console.warn('Notion Direct Line fetch failed, using seed fallback:', error);
     return loadSeedDirectLineNotes() as unknown as DirectLineNote[];
   }
+}
+
+export async function fetchSearchRequests(): Promise<SearchRequest[]> {
+  if (!env.NOTION_SEARCH_REQUESTS_DB_ID) {
+    return [];
+  }
+  try {
+    return await queryDatabaseExhaustive(
+      env.NOTION_SEARCH_REQUESTS_DB_ID,
+      mapSearchRequest,
+      loadSeedSearchRequests() as unknown as SearchRequest[],
+      { filterPublished: false }
+    );
+  } catch (error) {
+    console.warn('Notion Search Requests fetch failed, using seed fallback:', error);
+    return loadSeedSearchRequests() as unknown as SearchRequest[];
+  }
+}
+
+export async function createSearchRequest(title: string): Promise<SearchRequest> {
+  const databaseId = env.NOTION_SEARCH_REQUESTS_DB_ID;
+  if (!databaseId) {
+    throw new Error('NOTION_SEARCH_REQUESTS_DB_ID is not configured');
+  }
+  const response = await withBackoff(() =>
+    notion.pages.create({
+      parent: { database_id: databaseId },
+      properties: {
+        Title: { title: [{ text: { content: title } }] },
+        SearchedAt: { date: { start: new Date().toISOString() } },
+      },
+    })
+  );
+  return {
+    id: response.id as string,
+    title,
+    searchedAt: new Date().toISOString(),
+  };
 }
 
 /**

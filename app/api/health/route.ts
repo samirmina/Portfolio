@@ -61,9 +61,9 @@ export async function GET(): Promise<NextResponse> {
   const dbChecks = [
     { name: 'Activity Logs', id: env.NOTION_LOGS_DB_ID },
     { name: 'Professional Insights', id: env.NOTION_INSIGHTS_DB_ID },
-    { name: 'Repositories', id: env.NOTION_REPOS_DB_ID },
+    { name: 'Search Requests', id: env.NOTION_SEARCH_REQUESTS_DB_ID },
     { name: 'Direct Line / Notes', id: env.NOTION_NOTES_DB_ID },
-  ];
+  ].filter((db): db is { name: string; id: string } => Boolean(db.id));
 
   for (const db of dbChecks) {
     try {

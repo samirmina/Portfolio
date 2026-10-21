@@ -4,6 +4,7 @@ export type SeedActivityLog = (typeof seed.activityLogs)[number];
 export type SeedInsight = (typeof seed.professionalInsights)[number];
 export type SeedRepository = (typeof seed.repositories)[number];
 export type SeedDirectLineNote = (typeof seed.directLine)[number];
+export type SeedSearchRequest = (typeof seed.searchRequests)[number];
 
 /** Returns the bundled seed fallback used when upstream APIs are unavailable. */
 export function loadSeedFallback() {
@@ -24,4 +25,8 @@ export function loadSeedRepositories(): SeedRepository[] {
 
 export function loadSeedDirectLineNotes(): SeedDirectLineNote[] {
   return seed.directLine;
+}
+
+export function loadSeedSearchRequests(): SeedSearchRequest[] {
+  return seed.searchRequests;
 }

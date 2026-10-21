@@ -7,7 +7,7 @@ const envSchema = z.object({
   NOTION_TOKEN: z.string().min(1),
   NOTION_LOGS_DB_ID: z.string().min(1),
   NOTION_INSIGHTS_DB_ID: z.string().min(1),
-  NOTION_REPOS_DB_ID: z.string().min(1),
+  NOTION_SEARCH_REQUESTS_DB_ID: z.string().min(1).optional(),
   NOTION_NOTES_DB_ID: z.string().min(1),
   GITHUB_TOKEN: z.string().optional(),
   UPSTASH_REDIS_REST_URL: z.string().url(),
